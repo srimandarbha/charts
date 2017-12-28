@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from datetime import time
+#http://tobiasahlin.com/blog/chartjs-charts-to-get-you-started
 
 
 app = Flask(__name__)
@@ -59,6 +60,11 @@ def bar_chart():
     colors = [ "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA","#ABCDEF", "#DDDDDD", "#ABCABC"  ]
     return render_template('bar_chart.html', values=values,labels=labels, colors=colors)
 
+@app.route("/group_chart")
+def group_chart():
+    labels=["1900", "1950", "1999", "2050"]
+    countries={'Africa': { 'color': "#3e95cd", 'values': [133,221,783,2478]}, 'Europe': { 'color': "#8e5ea2", 'values': [408,547,675,734]} }
+    return render_template('group_chart.html', labelss=labels, countries=countries)
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
