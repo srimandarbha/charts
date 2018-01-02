@@ -1,6 +1,7 @@
-from flask import Flask
-from flask import render_template
+from flask import render_template, Flask, request
 from datetime import time
+from mysql_to_sqlite import DButil
+import os
 #http://tobiasahlin.com/blog/chartjs-charts-to-get-you-started
 
 
@@ -65,6 +66,13 @@ def group_chart():
     labels=["1900", "1950", "1999", "2050"]
     countries={'Africa': { 'color': "#3e95cd", 'values': [133,221,783,2478]}, 'Europe': { 'color': "#8e5ea2", 'values': [408,547,675,734]} }
     return render_template('group_chart.html', labelss=labels, countries=countries)
+
+@app.route("/dbcache",methods=['GET','POST'])
+def dbcache():
+    if request.method == 'POST':
+        if not os.path.isfile('test.db'):
+            DButil()
+    return render_template('clean_cache.html')
 
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
