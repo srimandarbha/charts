@@ -1,11 +1,12 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 .button {
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
+  padding: 3px 8px;
+  font-size: 10px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -13,8 +14,8 @@
   color: #fff;
   background-color: #4CAF50;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
 }
 
 .button:hover {background-color: #3e8e41}
@@ -29,10 +30,9 @@
 <body>
 
 <h2>Clear DB Cache</h2>
-
 <div class="container">
     <form method="post">
-        <input class="button" type="submit" value="refresh" >
+        <input class="button" type="submit" value="reset cache" >
     </form>
  </div>
 </body>
